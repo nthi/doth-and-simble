@@ -1,7 +1,13 @@
 import { BusinessList } from "./BusinessList.js"
 import { NewYorkBusinesses } from "./NewYorkBusinesses.js"
-const contentTarget = document.querySelector("#content")
 import { ManufacturingBusinesses } from "./ManufacturingBusinesses.js"
+import { AgentList } from "./AgentList.js"
+
+
+
+
+const contentTarget = document.querySelector("#content")
+
 
 const renderHTML = () => {
   contentTarget.innerHTML = `
@@ -27,7 +33,7 @@ const renderHTML = () => {
 
   <article class="agents">
       <h2>Purchasing Agents</h2>
-      
+      ${AgentList()}
   </article>
   `
 }
