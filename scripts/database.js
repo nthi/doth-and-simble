@@ -142,3 +142,8 @@ const database = {
       }
     ]
   }
+//export function returning copy of customer list for other modules
+  export const getCustomers = () => {
+    const copy = database.businesses.map(business => ({...business}))
+    return copy
+  }
