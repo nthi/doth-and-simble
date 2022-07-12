@@ -56,20 +56,16 @@ document
                     const foundBusiness = businesses.find(
                         // Your callback function goes here
                         (business) => {
-                            if (business.companyName.toLowerCase().includes(keyPressEvent.target.value.toLowerCase())){
-                                return business.companyName
+                            if (business.purchasingAgent.nameFirst.toLowerCase().includes(keyPressEvent.target.value.toLowerCase()) || business.purchasingAgent.nameLast.toLowerCase().includes(keyPressEvent.target.value.toLowerCase())){
+                                return business.purchasingAgent
                             }
                          })
                          //change everything to upper or lowercase so the match is less buggy
 
 
-                    companySearchResultArticle.innerHTML = `<section>
-                    <h3>${foundBusiness.companyName}</h3>
-                    <section>
-                    ${foundBusiness.addressFullStreet}<br>
-                    ${foundBusiness.addressCity}, ${foundBusiness.addressStateCode} ${foundBusiness.addressZipCode}
-                    </section>
-                </section>`
+                    companySearchResultArticle.innerHTML = `
+                    <section><h3>${foundBusiness.purchasingAgent.nameFirst} ${foundBusiness.purchasingAgent.nameLast}</h3><h4>${foundBusiness.companyName}</h4>${foundBusiness.phoneWork}</section>
+                    `
                 }
         });
 
