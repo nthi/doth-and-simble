@@ -3,24 +3,24 @@ import { getCustomers } from "./database.js";
 // Build a function named the same inside it that uses .map() to generate an HTML representation of each purchasing agent. Display the agent's name, company, and phone number.
 
 export const AgentList = () => {
-    const list = getCustomers()
+    const list = getCustomers() //get array of all customers from database
     
     //use .map()
     const agentHTMLRepresentations = list.map(
         // Your callback function goes here
         (agent) => {
             return `
-            <section>${agent.purchasingAgent.nameFirst} ${}</section>
+            <section><h3>${agent.purchasingAgent.nameFirst} ${agent.purchasingAgent.nameLast}</h3><h4>${agent.companyName}</h4>${agent.phoneWork}</section>
             `
             
             //this is going to give me an array of strings
          
         })
-    //     return agentHTMLRepresentations
+         //return agentHTMLRepresentations <don't need this because the return is in the previous step
     
-    // const finalHTML = agentHTMLRepresentations.join("")
+    const finalHTML = agentHTMLRepresentations.join("")
 
-    // return finalHTML
+    return finalHTML
 
 }
 

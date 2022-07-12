@@ -25,6 +25,54 @@ export const BusinessList = () => {
     return businessListHTML
 }
 
+//First do business search.
+//Then refactor your code to search for purchasing agents by FIRST NAME instead. If the search text is found in the first name of any purchasing agent, show that agent.
+//Then refactor to serach for purchasing agents by FIRST OR LAST NAME
+
+
+document
+    .querySelector("#content")
+        .addEventListener(
+            "keypress",
+            (keyPressEvent) => {
+                const companySearchResultArticle = document.querySelector(".foundBusinesses")
+
+                if (keyPressEvent.charCode === 13) {
+                   const businesses = getCustomers()
+                    //13 = CR/'Enter'
+                    /*
+                        When the user presses 'Enter', find the matching business.
+
+
+                        You can use the `.includes()` string method to
+                        see if a smaller string is part of a larger string.
+
+                        Example:
+                            if (business.companyName.includes(keyPressEvent.target.value)) {
+
+                            }
+                    */
+
+                    const foundBusiness = businesses.find(
+                        // Your callback function goes here
+                        (business) => {
+                            if (business.companyName.toLowerCase().includes(keyPressEvent.target.value.toLowerCase())){
+                                return business.companyName
+                            }
+                         })
+                         //change everything to upper or lowercase so the match is less buggy
+
+
+                    companySearchResultArticle.innerHTML = `<section>
+                    <h3>${foundBusiness.companyName}</h3>
+                    <section>
+                    ${foundBusiness.addressFullStreet}<br>
+                    ${foundBusiness.addressCity}, ${foundBusiness.addressStateCode} ${foundBusiness.addressZipCode}
+                    </section>
+                </section>`
+                }
+        });
+
 
 // {
 //     purchasingAgent: {
